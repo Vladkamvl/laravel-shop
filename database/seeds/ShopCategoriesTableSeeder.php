@@ -16,8 +16,8 @@ class ShopCategoriesTableSeeder extends Seeder
         $categories = [];
         for($i = 1; $i<=10; $i++){
 
-            $title = 'Категория #' . $i;
-            $description = 'Описания категории #' . $i;
+            $title = 'Category #' . $i;
+            $description = 'Description category #' . $i;
 
             $categories[] = [
                 'title' => $title,
