@@ -55,7 +55,10 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = $this->shopCategoryRepository->getById($id);
+        $products = $category->products;
+
+        return view('shop.categories.show', compact('category', 'products'));
     }
 
     /**

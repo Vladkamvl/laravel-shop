@@ -57,7 +57,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('shop.products.show');
+        $product = $this->shopProductRepository->getById($id);
+        if(empty($product)){
+            return abort(404);
+        }
+
+        return view('shop.products.show', compact('product'));
     }
 
     /**

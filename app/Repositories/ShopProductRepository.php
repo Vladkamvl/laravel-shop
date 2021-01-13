@@ -31,4 +31,19 @@ class ShopProductRepository extends CoreRepository
 
         return $products;
     }
+
+    /**
+     * @param int $id
+     * @return Model
+     */
+    public function getById($id){
+        $columns = ['id', 'title', 'description', 'image', 'category_id'];
+
+        $product = $this->startCondition()
+            ->select($columns)
+            ->with(['category:id,title'])
+            ->find($id);
+
+        return $product;
+    }
 }

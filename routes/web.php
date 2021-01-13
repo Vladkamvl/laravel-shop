@@ -18,7 +18,11 @@ Route::get('/', function(){
     return redirect()->route('shop.products.index');
 });
 //Products
-Route::resource('products', 'Shop\ProductController')->names('shop.products');
+Route::resource('products', 'Shop\ProductController')
+    ->only(['index', 'show'])
+    ->names('shop.products');
 
 //Categories
-Route::resource('categories', 'Shop\CategoryController')->names('shop.categories');
+Route::resource('categories', 'Shop\CategoryController')
+    ->only(['index', 'show'])
+    ->names('shop.categories');
