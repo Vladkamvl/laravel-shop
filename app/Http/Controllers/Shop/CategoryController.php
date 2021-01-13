@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\ShopCategoryRepository;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private ShopCategoryRepository $shopCategoryRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->shopCategoryRepository = app(ShopCategoryRepository::class);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('shop.categories.index');
+        $categories = $this->shopCategoryRepository->getAll();
+        return view('shop.categories.index', compact('categories'));
     }
 
     /**

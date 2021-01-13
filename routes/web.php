@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Shop routes
-
+Route::get('/', function(){
+    return redirect()->route('shop.products.index');
+});
 //Products
-Route::resource('products', 'Shop\ProductController');
+Route::resource('products', 'Shop\ProductController')->names('shop.products');
 
 //Categories
-Route::resource('categories', 'Shop\CategoryController');
+Route::resource('categories', 'Shop\CategoryController')->names('shop.categories');

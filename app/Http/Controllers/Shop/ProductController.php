@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Repositories\ShopProductRepository;
 
 class ProductController extends Controller
 {
+    private ShopProductRepository $shopProductRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->shopProductRepository = app(ShopProductRepository::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('shop.products.index');
+        $products = $this->shopProductRepository
+            ->getAllWithPagination(15);
+        return view('shop.products.index', compact('products'));
     }
 
     /**
