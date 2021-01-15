@@ -26,3 +26,7 @@ Route::resource('products', 'Shop\ProductController')
 Route::resource('categories', 'Shop\CategoryController')
     ->only(['index', 'show'])
     ->names('shop.categories');
+
+//Basket
+Route::get('bascket/', 'Shop\BasketController@index')->name('basket.index');
+Route::post('basket/add/{id}', 'Shop\BasketController@add')->name('basket.add');

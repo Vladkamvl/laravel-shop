@@ -23,6 +23,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('shop.categories.index') }}">Categories</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('basket.index') }}">Basket</a>
+                </li>
             </ul>
         </div>
     </nav>
