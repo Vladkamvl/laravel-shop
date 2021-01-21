@@ -26,7 +26,28 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('basket.index') }}">Basket</a>
                 </li>
+                @if(!Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link">Hello, {{ Auth::user()->name }}</a>
+                    </li>
+                    <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        @method('post')
+                        <button type="submit" class="nav-link btn btn-primary" href="{{ route('logout') }}">Logout</button>
+                    </form>
+                    </li>
+                @endif
+
             </ul>
+
         </div>
     </nav>
 
