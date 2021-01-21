@@ -37,7 +37,6 @@ class ShopCategoryRepository extends CoreRepository
     public function getById($id){
         $columns = ['id', 'title', 'description', 'image'];
         $category = $this->startCondition()
-//            ->with('products:id,title,description,image')
             ->find($id);
         return $category;
     }

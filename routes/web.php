@@ -30,3 +30,15 @@ Route::resource('categories', 'Shop\CategoryController')
 //Basket
 Route::get('bascket/', 'Shop\BasketController@index')->name('basket.index');
 Route::post('basket/add/{id}', 'Shop\BasketController@add')->name('basket.add');
+Route::post('basket/remove/{id}', 'Shop\BasketController@remove')->name('basket.remove');
+Route::get('bascket/checkout/', 'Shop\BasketController@checkout')->name('basket.checkout');
+Route::patch('bascket/confirm/', 'Shop\BasketController@confirm')->name('basket.confirm');
+
+//Auth
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+    'verify' => false,
+]);
+
+Route::get('/home', 'HomeController@index')->name('home');

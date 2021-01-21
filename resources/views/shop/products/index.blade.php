@@ -1,8 +1,13 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('title', 'All items')
 
 @section('content')
+    @if (session()->has('confirmOrder'))
+        <div class="alert alert-success">
+            {{ session()->get('confirmOrder') }}
+        </div>
+    @endif
     <div class="card-columns mt-4">
         @foreach($products as $product)
             <form action="{{ route('basket.add', [$product->id]) }}" method="POST">
